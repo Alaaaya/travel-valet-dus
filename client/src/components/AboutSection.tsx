@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Check } from 'lucide-react';
 
 export default function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,46 +31,46 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="ueber-uns" className="grid grid-cols-1 md:grid-cols-2">
+    <section id="ueber-uns" className="grid grid-cols-1 md:grid-cols-2" style={{ background: '#1a2847' }}>
       {/* Visual Side */}
       <div
         className="min-h-96 md:min-h-screen flex items-center justify-center relative overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #111 0%, #1a1a1a 50%, #0d0d0d 100%)',
+          backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663038360745/UuXWRhwHAUuwUjZEEfktYD/about-section-background-YV2SMQBzqvGT3hnsNGKEZf.webp)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
-        <div className="font-serif text-9xl md:text-[200px] font-bold text-white/7 leading-none text-center">
-          DUS
-        </div>
-        <div className="absolute bottom-9 left-9 right-9 border-t border-yellow-600/15 pt-5">
-          <p className="font-serif text-2xl italic text-white/45 leading-relaxed">
-            "Wir parken Ihr Auto –<br />Sie genießen die Reise."
-          </p>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/40" />
+        <div className="relative z-10 text-center">
+          <div className="font-serif text-9xl md:text-[200px] font-bold text-yellow-500/30 leading-none">
+            DUS
+          </div>
         </div>
       </div>
 
       {/* Content Side */}
       <div ref={containerRef} className="p-12 md:p-20 flex flex-col justify-center">
-        <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-yellow-600/10 border border-yellow-600/28 w-fit">
-          <span className="text-yellow-600 text-xs tracking-widest uppercase">Über uns</span>
+        <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-yellow-600/10 border border-yellow-600/30 w-fit">
+          <span className="text-yellow-500 text-xs tracking-widest uppercase font-semibold">Über uns</span>
         </div>
 
-        <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-8 reveal">
+        <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-10 reveal">
           Ihr persönlicher<br />Parkservice in Düsseldorf
         </h2>
 
-        <p className="text-base text-white/60 leading-relaxed mb-6 reveal reveal-delay-1">
+        <p className="text-base text-gray-300 leading-relaxed mb-8 reveal reveal-delay-1">
           Travel Valet Düsseldorf steht für komfortables, sicheres und preislich attraktives Valet Parking am Flughafen Düsseldorf (DUS). Wir übernehmen Ihr Fahrzeug persönlich – damit Sie sich voll auf Ihre Reise konzentrieren können.
         </p>
 
-        <p className="text-base text-white/60 leading-relaxed mb-8 reveal reveal-delay-2">
+        <p className="text-base text-gray-300 leading-relaxed mb-12 reveal reveal-delay-2">
           Unser Service richtet sich an Reisende aus Düsseldorf, Neuss, Ratingen, Duisburg, Krefeld, Meerbusch und der gesamten Region.
         </p>
 
-        <ul className="space-y-4 mb-10 reveal reveal-delay-3">
+        <ul className="space-y-4 mb-12 reveal reveal-delay-3">
           {features.map((feature, idx) => (
-            <li key={idx} className="flex items-start gap-3 text-sm text-white/70">
-              <span className="text-yellow-600 text-lg mt-0.5">✦</span>
+            <li key={idx} className="flex items-start gap-4 text-sm text-gray-300">
+              <Check className="w-6 h-6 text-yellow-500 flex-shrink-0 mt-0.5" />
               <span>{feature}</span>
             </li>
           ))}
@@ -77,7 +78,7 @@ export default function AboutSection() {
 
         <a
           href="#buchen"
-          className="bg-yellow-600 text-black font-medium px-8 py-3 hover:bg-yellow-500 transition-colors inline-block w-fit reveal reveal-delay-4"
+          className="bg-yellow-500 text-slate-900 font-semibold px-8 py-4 hover:bg-yellow-400 transition-all duration-300 inline-block w-fit rounded-lg shadow-lg hover:shadow-xl reveal reveal-delay-4"
         >
           Jetzt Stellplatz sichern →
         </a>

@@ -43,39 +43,39 @@
 }
 
 :root {
-  --primary: #c9a84c;
-  --primary-foreground: #faf9f6;
-  --sidebar-primary: #c9a84c;
-  --sidebar-primary-foreground: #faf9f6;
-  --chart-1: #c9a84c;
+  --primary: #d4af37;
+  --primary-foreground: #1a2847;
+  --sidebar-primary: #d4af37;
+  --sidebar-primary-foreground: #1a2847;
+  --chart-1: #d4af37;
   --chart-2: #e8c97a;
   --chart-3: #b89a3f;
   --chart-4: #a88a35;
   --chart-5: #98792b;
   --radius: 0.65rem;
-  --background: #0d0d0d;
-  --foreground: #faf9f6;
-  --card: #181818;
-  --card-foreground: #faf9f6;
-  --popover: #181818;
-  --popover-foreground: #faf9f6;
-  --secondary: #222;
+  --background: #1a2847;
+  --foreground: #ffffff;
+  --card: #243558;
+  --card-foreground: #ffffff;
+  --popover: #243558;
+  --popover-foreground: #ffffff;
+  --secondary: #2d3f5a;
   --secondary-foreground: #e0e0e0;
-  --muted: #2a2a2a;
-  --muted-foreground: #888;
-  --accent: #c9a84c;
-  --accent-foreground: #0d0d0d;
+  --muted: #3d4f6a;
+  --muted-foreground: #a0a0a0;
+  --accent: #d4af37;
+  --accent-foreground: #1a2847;
   --destructive: #ef4444;
-  --destructive-foreground: #faf9f6;
-  --border: rgba(201, 168, 76, 0.12);
-  --input: rgba(255, 255, 255, 0.09);
-  --ring: #c9a84c;
-  --sidebar: #181818;
-  --sidebar-foreground: #faf9f6;
-  --sidebar-accent: #c9a84c;
-  --sidebar-accent-foreground: #0d0d0d;
-  --sidebar-border: rgba(201, 168, 76, 0.12);
-  --sidebar-ring: #c9a84c;
+  --destructive-foreground: #ffffff;
+  --border: rgba(212, 175, 55, 0.15);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #d4af37;
+  --sidebar: #243558;
+  --sidebar-foreground: #ffffff;
+  --sidebar-accent: #d4af37;
+  --sidebar-accent-foreground: #1a2847;
+  --sidebar-border: rgba(212, 175, 55, 0.15);
+  --sidebar-ring: #d4af37;
 }
 
 @layer base {
@@ -133,17 +133,17 @@
     }
   }
 
-  /* Minimalist Luxury Design System */
+  /* Premium Design System */
   .gold-accent {
-    color: #c9a84c;
+    color: #d4af37;
   }
 
   .gold-border {
-    border-color: rgba(201, 168, 76, 0.12);
+    border-color: rgba(212, 175, 55, 0.15);
   }
 
   .gold-border-hover:hover {
-    border-color: rgba(201, 168, 76, 0.28);
+    border-color: rgba(212, 175, 55, 0.3);
   }
 
   .reveal {
@@ -171,5 +171,28 @@
 
   .reveal-delay-4 {
     transition-delay: 0.32s;
+  }
+
+  /* Premium Button Styles */
+  .btn-premium {
+    @apply bg-yellow-500 text-slate-900 font-semibold px-8 py-3 hover:bg-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-premium-outline {
+    @apply border-2 border-yellow-500 text-yellow-500 px-8 py-3 hover:bg-yellow-500 hover:text-slate-900 transition-all duration-300;
+  }
+
+  /* Image Overlay */
+  .image-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26, 40, 71, 0.4) 0%, rgba(26, 40, 71, 0.2) 100%);
+    z-index: 1;
   }
 }

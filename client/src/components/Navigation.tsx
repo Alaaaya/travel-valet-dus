@@ -24,23 +24,23 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/95 backdrop-blur-lg border-b border-yellow-600/20'
-          : 'bg-black/95 backdrop-blur-lg border-b border-yellow-600/12'
+          ? 'bg-slate-900/95 backdrop-blur-lg border-b border-yellow-600/20'
+          : 'bg-slate-900/80 backdrop-blur-lg border-b border-yellow-600/10'
       }`}
       style={{ padding: '18px 48px' }}
     >
-      <div className="flex items-center justify-between">
-        <a href="#" className="font-serif text-xl font-bold text-white">
-          Travel Valet <span className="text-yellow-600">Düsseldorf</span>
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
+        <a href="#" className="font-serif text-2xl font-bold text-white">
+          Travel Valet <span className="text-yellow-500">Düsseldorf</span>
         </a>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-8 items-center list-none">
+        <ul className="hidden md:flex gap-10 items-center list-none">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-white/70 hover:text-yellow-600 transition-colors"
+                className="text-sm text-gray-300 hover:text-yellow-500 transition-colors font-medium"
               >
                 {link.label}
               </a>
@@ -49,7 +49,7 @@ export default function Navigation() {
           <li>
             <a
               href="#buchen"
-              className="text-sm font-medium bg-yellow-600 text-black px-6 py-2 hover:bg-yellow-500 transition-colors"
+              className="text-sm font-bold bg-yellow-500 text-slate-900 px-6 py-2 hover:bg-yellow-400 transition-all rounded-lg shadow-lg hover:shadow-xl"
             >
               Jetzt Buchen
             </a>
@@ -68,13 +68,13 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-black/98 border-b border-yellow-600/15 flex flex-col">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-slate-900/98 border-b border-yellow-600/15 flex flex-col">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-white/75 text-base px-6 py-4 border-b border-white/6 hover:text-yellow-600 transition-colors"
+              className="text-gray-300 text-base px-6 py-4 border-b border-yellow-600/10 hover:text-yellow-500 transition-colors font-medium"
             >
               {link.label}
             </a>
@@ -82,7 +82,7 @@ export default function Navigation() {
           <a
             href="#buchen"
             onClick={() => setMobileMenuOpen(false)}
-            className="bg-yellow-600 text-black text-center font-medium py-4 px-6 hover:bg-yellow-500 transition-colors"
+            className="bg-yellow-500 text-slate-900 text-center font-bold py-4 px-6 hover:bg-yellow-400 transition-colors"
           >
             Jetzt Buchen →
           </a>
