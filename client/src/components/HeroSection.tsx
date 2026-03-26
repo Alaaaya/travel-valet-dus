@@ -53,7 +53,7 @@ export default function HeroSection() {
             Jetzt buchen →
           </a>
           <a
-            href="https://wa.me/491234567890"
+            href="https://wa.me/491639176557"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-green-500 text-white font-semibold px-8 py-4 hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-center"
@@ -61,7 +61,7 @@ export default function HeroSection() {
             💬 Über WhatsApp buchen
           </a>
           <a
-            href="tel:+491234567890"
+            href="tel:+491639176557"
             className="border-2 border-white text-white px-8 py-4 hover:bg-white hover:text-slate-900 transition-all duration-300 inline-block text-center font-semibold"
           >
             📞 Direkt anrufen

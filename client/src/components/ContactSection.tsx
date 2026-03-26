@@ -26,15 +26,15 @@ export default function ContactSection() {
     {
       icon: Phone,
       label: 'Telefon',
-      value: '+49 123 456 78 90',
-      href: 'tel:+491234567890',
+      value: '+49 163 9176557',
+      href: 'tel:+491639176557',
       delay: 0,
     },
     {
       icon: MessageCircle,
       label: 'WhatsApp',
       value: 'Jetzt schreiben',
-      href: 'https://wa.me/491234567890',
+      href: 'https://wa.me/491639176557',
       delay: 1,
     },
     {
