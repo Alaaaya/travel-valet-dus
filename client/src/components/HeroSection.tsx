@@ -17,7 +17,7 @@ export default function HeroSection() {
       }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/60 to-slate-900/40 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/50 to-slate-900/30 z-0" />
 
       {/* Content */}
       <div className="relative z-20 max-w-3xl animate-in fade-in slide-in-from-bottom-6 duration-1000">
@@ -25,8 +25,8 @@ export default function HeroSection() {
         <div
           className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full"
           style={{
-            background: 'rgba(212, 175, 55, 0.1)',
-            border: '1px solid rgba(212, 175, 55, 0.3)',
+            background: 'rgba(212, 175, 55, 0.15)',
+            border: '1px solid rgba(212, 175, 55, 0.4)',
           }}
         >
           <span className="text-yellow-500 text-xs tracking-widest uppercase">✦ Premium Valet Service · Düsseldorf DUS</span>
@@ -44,13 +44,21 @@ export default function HeroSection() {
           Wir übernehmen Ihr Fahrzeug direkt am Terminal – sicher, diskret und zuverlässig. Sie steigen aus, wir parken. So einfach ist das.
         </p>
 
-        {/* Buttons */}
+        {/* Buttons - New Order */}
         <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
           <a
             href="#buchen"
             className="bg-yellow-500 text-slate-900 font-semibold px-8 py-4 hover:bg-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-center"
           >
             Jetzt buchen →
+          </a>
+          <a
+            href="https://wa.me/491234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-green-500 text-white font-semibold px-8 py-4 hover:bg-green-600 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-center"
+          >
+            💬 Über WhatsApp buchen
           </a>
           <a
             href="tel:+491234567890"

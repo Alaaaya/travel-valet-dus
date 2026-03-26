@@ -24,14 +24,14 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-slate-900/95 backdrop-blur-lg border-b border-yellow-600/20'
-          : 'bg-slate-900/80 backdrop-blur-lg border-b border-yellow-600/10'
+          ? 'bg-white/95 backdrop-blur-lg border-b border-yellow-200'
+          : 'bg-white/80 backdrop-blur-lg border-b border-yellow-100'
       }`}
       style={{ padding: '18px 48px' }}
     >
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        <a href="#" className="font-serif text-2xl font-bold text-white">
-          Travel Valet <span className="text-yellow-500">Düsseldorf</span>
+        <a href="#" className="font-serif text-2xl font-bold text-gray-900">
+          Travel Valet <span className="text-yellow-600">Düsseldorf</span>
         </a>
 
         {/* Desktop Navigation */}
@@ -40,7 +40,7 @@ export default function Navigation() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-gray-300 hover:text-yellow-500 transition-colors font-medium"
+                className="text-sm text-gray-700 hover:text-yellow-600 transition-colors font-medium"
               >
                 {link.label}
               </a>
@@ -49,7 +49,7 @@ export default function Navigation() {
           <li>
             <a
               href="#buchen"
-              className="text-sm font-bold bg-yellow-500 text-slate-900 px-6 py-2 hover:bg-yellow-400 transition-all rounded-lg shadow-lg hover:shadow-xl"
+              className="text-sm font-bold bg-yellow-500 text-white px-6 py-2 hover:bg-yellow-600 transition-all rounded-lg shadow-lg hover:shadow-xl"
             >
               Jetzt Buchen
             </a>
@@ -58,7 +58,7 @@ export default function Navigation() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-1 text-white"
+          className="md:hidden p-1 text-gray-900"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Menü"
         >
@@ -68,13 +68,13 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-slate-900/98 border-b border-yellow-600/15 flex flex-col">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/98 border-b border-yellow-200 flex flex-col">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-gray-300 text-base px-6 py-4 border-b border-yellow-600/10 hover:text-yellow-500 transition-colors font-medium"
+              className="text-gray-700 text-base px-6 py-4 border-b border-yellow-100 hover:text-yellow-600 transition-colors font-medium"
             >
               {link.label}
             </a>
@@ -82,7 +82,7 @@ export default function Navigation() {
           <a
             href="#buchen"
             onClick={() => setMobileMenuOpen(false)}
-            className="bg-yellow-500 text-slate-900 text-center font-bold py-4 px-6 hover:bg-yellow-400 transition-colors"
+            className="bg-yellow-500 text-white text-center font-bold py-4 px-6 hover:bg-yellow-600 transition-colors"
           >
             Jetzt Buchen →
           </a>

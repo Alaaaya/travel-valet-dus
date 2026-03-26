@@ -56,14 +56,14 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section id="services" className="py-24 px-6 md:px-12" style={{ background: '#1a2847' }}>
+    <section id="services" className="py-24 px-6 md:px-12" style={{ background: '#f8f8f8' }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-20">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-yellow-600/10 border border-yellow-600/30">
-            <span className="text-yellow-500 text-xs tracking-widest uppercase">Leistungen</span>
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-yellow-100 border border-yellow-300">
+            <span className="text-yellow-700 text-xs tracking-widest uppercase font-semibold">Leistungen</span>
           </div>
-          <h2 className="font-serif text-5xl md:text-6xl font-bold text-white">
+          <h2 className="font-serif text-5xl md:text-6xl font-bold text-gray-900">
             Unser Premium-Service<br />im Überblick
           </h2>
         </div>
@@ -73,7 +73,7 @@ export default function ServicesSection() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="service-card reveal bg-gradient-to-br from-slate-700/30 to-slate-800/30 border border-yellow-600/20 rounded-xl overflow-hidden hover:border-yellow-500/40 transition-all duration-300 hover:shadow-2xl"
+              className="service-card reveal bg-white border border-yellow-200 rounded-xl overflow-hidden hover:border-yellow-400 transition-all duration-300 hover:shadow-xl"
             >
               {/* Image */}
               <div className="h-48 overflow-hidden relative">
@@ -82,26 +82,26 @@ export default function ServicesSection() {
                   alt={service.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent" />
               </div>
 
               {/* Content */}
               <div className="p-8 relative">
                 {/* Number */}
-                <div className="absolute top-6 right-8 font-serif text-5xl font-bold text-yellow-500/20">
+                <div className="absolute top-6 right-8 font-serif text-5xl font-bold text-yellow-200">
                   {service.number}
                 </div>
 
                 {/* Icon */}
-                <div className="w-14 h-14 border-2 border-yellow-500 rounded-lg flex items-center justify-center text-2xl mb-6 bg-yellow-500/10">
+                <div className="w-14 h-14 border-2 border-yellow-500 rounded-lg flex items-center justify-center text-2xl mb-6 bg-yellow-50">
                   {service.icon}
                 </div>
 
                 {/* Title */}
-                <h3 className="font-serif text-2xl font-bold text-white mb-4">{service.title}</h3>
+                <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
 
                 {/* Description */}
-                <p className="text-sm text-gray-300 leading-relaxed">{service.description}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{service.description}</p>
               </div>
             </div>
           ))}
