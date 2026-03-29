@@ -3,6 +3,9 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import AdminDashboard from "@/pages/AdminDashboard";
+import Checkout from "@/pages/Checkout";
+import Success from "@/pages/Success";
+import Cancel from "@/pages/Cancel";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -13,6 +16,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/checkout" component={Checkout} />
+      <Route path="/success" component={Success} />
+      <Route path="/cancel" component={Cancel} />
       <Route path="/admin" component={AdminDashboard} />
       <Route path="/404" component={NotFound} />
       {/* Final fallback route */}

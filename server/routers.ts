@@ -1,9 +1,13 @@
 import { z } from "zod";
+import Stripe from "stripe";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
-import { getAllPricing, getPricingByType, updatePricing, getAllServices, getActiveServices, updateService } from "./db";
+import { getAllPricing, getPricingByType, updatePricing, getAllServices, getActiveServices, updateService, createOrder } from "./db";
+import { ENV } from "./_core/env";
+
+const stripe = new Stripe(ENV.stripeSecretKey);
 
 export const appRouter = router({
   system: systemRouter,
@@ -61,6 +65,75 @@ export const appRouter = router({
         const { id, ...data } = input;
         await updateService(id, data);
         return { success: true };
+      }),
+  }),
+
+  payment: router({
+    createCheckoutSession: protectedProcedure
+      .input(z.object({
+        serviceType: z.string(),
+        serviceName: z.string(),
+        days: z.number().min(1).max(30),
+        customerName: z.string(),
+        customerEmail: z.string().email(),
+      }))
+      .mutation(async ({ ctx, input }) => {
+        if (!ctx.user) {
+          throw new Error('User not authenticated');
+        }
+
+        const pricing = await getPricingByType(input.serviceType);
+        if (!pricing) {
+          throw new Error('Service not found');
+        }
+
+        const priceInCents = pricing.pricePerDay * input.days;
+        const totalWithTax = Math.round(priceInCents * 1.19);
+
+        const order = await createOrder({
+          userId: ctx.user.id,
+          serviceType: input.serviceType,
+          serviceName: input.serviceName,
+          priceInCents: totalWithTax,
+          currency: 'EUR',
+          customerEmail: input.customerEmail,
+          customerName: input.customerName,
+          status: 'pending',
+        });
+
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ['card'],
+          customer_email: input.customerEmail,
+          client_reference_id: ctx.user.id.toString(),
+          metadata: {
+            user_id: ctx.user.id.toString(),
+            order_id: order.id.toString(),
+            customer_email: input.customerEmail,
+            customer_name: input.customerName,
+          },
+          line_items: [
+            {
+              price_data: {
+                currency: 'eur',
+                product_data: {
+                  name: input.serviceName,
+                  description: `${input.days} day(s) of ${input.serviceName}`,
+                },
+                unit_amount: totalWithTax,
+              },
+              quantity: 1,
+            },
+          ],
+          mode: 'payment',
+          success_url: `${ctx.req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${ctx.req.headers.origin}/cancel`,
+          allow_promotion_codes: true,
+        });
+
+        return {
+          url: session.url,
+          sessionId: session.id,
+        };
       }),
   }),
 });

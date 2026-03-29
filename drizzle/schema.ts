@@ -50,3 +50,21 @@ export const services = mysqlTable("services", {
 
 export type Service = typeof services.$inferSelect;
 export type InsertService = typeof services.$inferInsert;
+export const orders = mysqlTable("orders", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  serviceType: varchar("serviceType", { length: 50 }).notNull(),
+  serviceName: varchar("serviceName", { length: 100 }).notNull(),
+  priceInCents: int("priceInCents").notNull(),
+  currency: varchar("currency", { length: 3 }).default("EUR").notNull(),
+  customerEmail: varchar("customerEmail", { length: 320 }).notNull(),
+  customerName: varchar("customerName", { length: 100 }),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 255 }),
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }),
+  status: mysqlEnum("status", ["pending", "completed", "failed", "cancelled"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Order = typeof orders.$inferSelect;
+export type InsertOrder = typeof orders.$inferInsert;

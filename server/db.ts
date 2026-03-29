@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, pricing, services, Pricing, Service } from "../drizzle/schema";
+import { InsertUser, users, pricing, services, Pricing, Service, orders, InsertOrder, Order } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -136,4 +136,18 @@ export async function updateService(id: number, data: Partial<Service>): Promise
   await db.update(services)
     .set({ ...data, updatedAt: new Date() })
     .where(eq(services.id, id));
+}
+
+// Orders helpers
+export async function createOrder(data: InsertOrder): Promise<Order> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  
+  const result = await db.insert(orders).values(data);
+  const orderId = result[0].insertId;
+  
+  const createdOrder = await db.select().from(orders).where(eq(orders.id, parseInt(orderId.toString()))).limit(1);
+  if (!createdOrder.length) throw new Error("Failed to create order");
+  
+  return createdOrder[0];
 }

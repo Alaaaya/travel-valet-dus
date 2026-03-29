@@ -9,9 +9,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
 
 export default function AdminDashboard() {
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading, refresh } = useAuth();
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // Refresh user data on mount to get latest role
+  useEffect(() => {
+    if (!authLoading) {
+      refresh();
+    }
+  }, []);
 
   // Pricing state
   const [freiflächePrice, setFreiflächePrice] = useState('10');
@@ -80,6 +87,10 @@ export default function AdminDashboard() {
       </div>
     );
   }
+
+  // Debug log
+  console.log('Current user:', user);
+  console.log('User role:', user?.role);
 
   if (!user || user.role !== 'admin') {
     return (
