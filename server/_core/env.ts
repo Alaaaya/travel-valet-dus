@@ -9,4 +9,6 @@ export const ENV = {
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY ?? "",
   adminEmail: process.env.ADMIN_EMAIL ?? "",
+  gmailUser: process.env.GMAIL_USER ?? "",
+  gmailPassword: process.env.GMAIL_APP_PASSWORD ?? "",
 };
