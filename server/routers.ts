@@ -6,6 +6,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
 import { getAllPricing, getPricingByType, updatePricing, getAllServices, getActiveServices, updateService, createOrder } from "./db";
 import { ENV } from "./_core/env";
+import { sendBookingConfirmationEmail } from "./_core/emailService";
 
 const stripe = new Stripe(ENV.stripeSecretKey);
 
@@ -128,6 +129,18 @@ export const appRouter = router({
           success_url: `${ctx.req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
           cancel_url: `${ctx.req.headers.origin}/cancel`,
           allow_promotion_codes: true,
+        });
+
+        // Send booking confirmation email to admin
+        await sendBookingConfirmationEmail({
+          customerName: input.customerName,
+          customerEmail: input.customerEmail,
+          serviceName: input.serviceName,
+          days: input.days,
+          totalPrice: totalWithTax,
+          currency: 'EUR',
+          bookingDate: new Date().toLocaleString('de-DE'),
+          orderId: order.id,
         });
 
         return {
