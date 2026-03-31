@@ -47,7 +47,7 @@ export default function HeroSection() {
         {/* Buttons - New Order */}
         <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
           <a
-            href="/checkout"
+            href="/booking"
             className="bg-yellow-500 text-slate-900 font-semibold px-8 py-4 hover:bg-yellow-400 transition-all duration-300 shadow-lg hover:shadow-xl inline-block text-center"
           >
             Jetzt buchen →

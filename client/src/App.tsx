@@ -6,6 +6,7 @@ import AdminDashboard from "@/pages/AdminDashboard";
 import Checkout from "@/pages/Checkout";
 import Success from "@/pages/Success";
 import Cancel from "@/pages/Cancel";
+import BookingPage from "@/pages/BookingPage";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -16,6 +17,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/booking" component={BookingPage} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/success" component={Success} />
       <Route path="/cancel" component={Cancel} />
